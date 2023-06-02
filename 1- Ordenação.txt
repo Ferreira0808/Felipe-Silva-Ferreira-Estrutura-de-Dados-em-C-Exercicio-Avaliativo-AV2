@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+void bs(int v[], int n) {
+    
+    int i, j, t;
+    
+    for (i = 0; i < n - 1; i++) {
+        
+        for (j = 0; j < n - i - 1; j++) {
+            
+            if (v[j] > v[j + 1]) {
+                
+                t = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = t;
+}}}}
+
+void is(int v[], int n) {
+    
+    int i, key, j;
+    
+    for (i = 1; i < n; i++) {
+        
+        key = v[i];
+        j = i - 1;
+        
+        while (j >= 0 && v[j] > key) {
+            
+            v[j + 1] = v[j];
+            j = j - 1;
+        }
+        
+        v[j + 1] = key;
+}}
+
+void print(int v[], int n) {
+    
+    printf("Resultado:\n\n");
+    
+    for (int i = 0; i < n; i++) {
+        printf("| %d ", v[i]);
+    }
+    printf("|\n");
+}
+
+int main() {
+    int n, option, i;
+    
+    printf("Escolha um tamanho pro vetor:\n");
+    scanf("%d", &n);
+
+    int v[n];
+    printf("Preencha o vetor:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &v[i]);
+    }
+    
+    printf("Escolha uma forma de organizar:\n");
+    
+    printf("1 => Bubble Sort\n");
+    
+    printf("2 => Insertion Sort\n");
+    
+    scanf("%d", &option);
+
+    switch (option) {
+        case 1:
+            bs(v, n);
+            print(v, n);
+            break;
+        case 2:
+            is(v, n);
+            print(v, n);
+            break;
+        default:
+            printf("Essa opção não existe\n");
+            break;
+    }
+
+    return 0;
+}
